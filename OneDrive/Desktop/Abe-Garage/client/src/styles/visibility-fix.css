@@ -1,0 +1,251 @@
+/* Force Visibility CSS - Makes all social media and emergency elements visible */
+
+/* Force all social media icons to be visible */
+.social-icon,
+.social-media-integration,
+.social-media-integration * {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force emergency elements to be visible */
+.emergency-banner,
+.emergency-contact,
+.emergency-icon,
+.emergency-phone,
+.emergency-btn,
+.emergency-title,
+.emergency-description {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force professional elements to be visible */
+.professional-emergency-contact,
+.professional-btn,
+.contact-hero,
+.professional-section,
+.professional-section::before {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force confidence meters to be visible */
+.confidence-meter,
+.ai-prediction-engine .confidence-meter {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force timeline elements to be visible */
+.timeline-line,
+.timeline-line * {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force 3D model elements to be visible */
+.car-3d-container::after,
+.part-info-panel,
+.car-3d-container button {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force toggle elements to be visible */
+.toggle-label input[type="checkbox"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force voice settings elements to be visible */
+.voice-settings summary::-webkit-details-marker {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Enhanced social media icon styling for maximum visibility */
+.footer-custom .social-icon {
+  width: 55px !important;
+  height: 55px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 3px solid rgba(255, 255, 255, 0.4) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.4rem !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Enhanced emergency banner styling */
+.emergency-banner {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.2),
+    rgba(245, 101, 101, 0.15)
+  ) !important;
+  border: 4px solid rgba(239, 68, 68, 0.6) !important;
+  padding: 2.5rem !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  animation: emergencyGlow 2s ease-in-out infinite !important;
+}
+
+/* Enhanced emergency icon */
+.emergency-icon {
+  width: 80px !important;
+  height: 80px !important;
+  background: linear-gradient(135deg, #ef4444, #f87171) !important;
+  color: white !important;
+  font-size: 2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 4px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Ensure all text in emergency sections is visible */
+.emergency-title,
+.emergency-description,
+.emergency-phone {
+  color: #ffffff !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force button visibility */
+.emergency-btn,
+.professional-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  color: white !important;
+  padding: 1rem 2rem !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Mobile responsive visibility fixes */
+@media (max-width: 768px) {
+  .social-icon {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.2rem !important;
+  }
+
+  .emergency-icon {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 1.8rem !important;
+  }
+
+  .emergency-banner {
+    padding: 2rem !important;
+  }
+}
+
+/* Ensure Bootstrap icons are visible */
+.bi {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Force phone numbers and emergency contacts to be highly visible */
+a[href^="tel:"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  text-decoration: none !important;
+  background: rgba(239, 68, 68, 0.2) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  border: 2px solid rgba(239, 68, 68, 0.6) !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+a[href^="tel:"]:hover {
+  background: rgba(239, 68, 68, 0.3) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Emergency phone numbers in hero sections */
+.fw-bold:contains("+1 (123) 456-7891"),
+.emergency-phone,
+.emergency-line {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.3rem !important;
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
+  border: 3px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Emergency strip phone numbers */
+.ag-emergency a[href^="tel:"] {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  background: rgba(239, 68, 68, 0.3) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  border: 2px solid #ef4444 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Phone numbers in cards */
+.card-custom a[href^="tel:"] {
+  color: #dc2626 !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  text-decoration: underline !important;
+}
+
+.card-custom a[href^="tel:"]:hover {
+  color: #b91c1c !important;
+  text-decoration: none !important;
+}
+
+/* Mobile responsive phone numbers */
+@media (max-width: 768px) {
+  a[href^="tel:"] {
+    font-size: 1.1rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+
+  .fw-bold:contains("+1 (123) 456-7891"),
+  .emergency-phone,
+  .emergency-line {
+    font-size: 1.2rem !important;
+    padding: 0.6rem 1.2rem !important;
+  }
+}

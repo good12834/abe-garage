@@ -1,0 +1,536 @@
+/* ===========================================
+   QUICK ACTIONS WIDGET
+=========================================== */
+.quick-actions-widget {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.quick-actions-widget:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-light);
+}
+
+.widget-header {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.widget-header h4 {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.widget-body {
+  padding: 1.5rem;
+}
+
+/* ===========================================
+   CATEGORY FILTER BUTTONS
+=========================================== */
+.category-filter {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--primary);
+  color: var(--text);
+}
+
+.category-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.category-btn:not(.active) .category-count {
+  background: var(--border-color);
+  color: var(--text-muted);
+}
+
+/* ===========================================
+   QUICK ACTION BUTTONS GRID
+=========================================== */
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* BUTTON BASE */
+.action-button {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text);
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+  text-decoration: none;
+}
+
+/* ===========================================
+   ICON + TEXT INSIDE BUTTON
+=========================================== */
+.action-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.action-button:hover .action-icon-container {
+  background: var(--primary);
+  color: white;
+}
+
+.action-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.action-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.action-button:hover .action-title {
+  color: var(--primary);
+}
+
+.action-description {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+/* ===========================================
+   PRIORITY DOT (High – Medium – Low)
+=========================================== */
+.priority-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+}
+
+.priority-badge.high {
+  background: var(--danger);
+}
+
+.priority-badge.medium {
+  background: var(--warning);
+}
+
+.priority-badge.low {
+  background: var(--success);
+}
+
+/* ===========================================
+   CUSTOM COLORS
+=========================================== */
+.action-button.btn-primary {
+  border-color: var(--primary);
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.action-button.btn-primary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.action-button.btn-primary:hover .action-title {
+  color: white;
+}
+
+.action-button.btn-secondary {
+  border-color: var(--gray-400);
+  background: rgba(107, 114, 128, 0.05);
+}
+
+.action-button.btn-secondary:hover {
+  background: var(--gray-700);
+  color: white;
+  border-color: var(--gray-700);
+}
+
+.action-button.btn-secondary:hover .action-title {
+  color: white;
+}
+
+.action-button.btn-success {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.action-button.btn-success:hover {
+  background: var(--success);
+  color: white;
+}
+
+.action-button.btn-success:hover .action-title {
+  color: white;
+}
+
+.action-button.btn-danger {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.action-button.btn-danger:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.action-button.btn-danger:hover .action-title {
+  color: white;
+}
+
+.action-button.btn-warning {
+  border-color: var(--warning);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.action-button.btn-warning:hover {
+  background: var(--warning);
+  color: white;
+}
+
+.action-button.btn-warning:hover .action-title {
+  color: white;
+}
+
+.action-button.btn-info {
+  border-color: var(--primary-light);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.action-button.btn-info:hover {
+  background: var(--primary-light);
+  color: white;
+}
+
+.action-button.btn-info:hover .action-title {
+  color: white;
+}
+
+.action-button.btn-dark {
+  border-color: var(--gray-700);
+  background: rgba(31, 41, 55, 0.05);
+}
+
+.action-button.btn-dark:hover {
+  background: var(--gray-700);
+  color: white;
+  border-color: var(--gray-700);
+}
+
+.action-button.btn-dark:hover .action-title {
+  color: white;
+}
+
+.action-button.btn-purple {
+  border-color: var(--purple);
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.action-button.btn-purple:hover {
+  background: var(--purple);
+  color: white;
+}
+
+.action-button.btn-purple:hover .action-title {
+  color: white;
+}
+
+/* ===========================================
+   EMERGENCY SECTION
+=========================================== */
+.emergency-section {
+  background: var(--bg-secondary);
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.emergency-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emergency-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.emergency-icon {
+  font-size: 2rem;
+  color: var(--danger);
+}
+
+.emergency-text h6 {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.9375rem;
+}
+
+.emergency-text small {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* ===========================================
+   SUGGESTIONS SECTION
+=========================================== */
+.suggestions-section {
+  margin-bottom: 1.5rem;
+}
+
+.suggestions-section h6 {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.suggestion-item {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background: var(--bg-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.suggestion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.suggestion-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.suggestion-icon {
+  font-size: 1.5rem;
+}
+
+.suggestion-text {
+  flex: 1;
+}
+
+.suggestion-text small {
+  display: block;
+}
+
+.suggestion-text .fw-bold {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.125rem;
+}
+
+.suggestion-text .text-muted {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* ===========================================
+   ACTION STATS
+=========================================== */
+.action-stats {
+  background: var(--bg-secondary);
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.stats-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stats-icon {
+  font-size: 1.5rem;
+}
+
+.stats-text {
+  flex: 1;
+}
+
+.stats-text small {
+  display: block;
+}
+
+.stats-text .fw-bold {
+  font-weight: 700;
+  margin-bottom: 0.125rem;
+}
+
+.stats-text .text-muted {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN
+=========================================== */
+@media (max-width: 768px) {
+  .widget-body {
+    padding: 1rem;
+  }
+  
+  .category-filter {
+    margin-bottom: 1rem;
+  }
+  
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .action-button {
+    padding: 0.75rem;
+  }
+  
+  .action-icon-container {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .action-title {
+    font-size: 0.875rem;
+  }
+  
+  .action-description {
+    font-size: 0.7rem;
+  }
+  
+  .emergency-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .emergency-content {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  
+  .suggestions-section {
+    margin-bottom: 1rem;
+  }
+  
+  .action-stats {
+    padding: 1rem;
+  }
+  
+  .stats-content {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-filter {
+    flex-wrap: wrap;
+  }
+}

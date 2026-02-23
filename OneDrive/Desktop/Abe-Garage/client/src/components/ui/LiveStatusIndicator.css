@@ -1,0 +1,210 @@
+/* Live Status Indicator Component Styles */
+
+.live-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Connected Status */
+.live-status-connected {
+  color: #4ade80;
+}
+
+.live-status-connected .live-status-dot {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.4), 0 0 20px rgba(74, 222, 128, 0.2),
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.live-status-connected .live-status-icon {
+  color: white;
+  font-size: 0.6rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Disconnected Status */
+.live-status-disconnected {
+  color: #f87171;
+}
+
+.live-status-disconnected .live-status-dot {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.3),
+    0 0 16px rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.live-status-disconnected .live-status-icon {
+  color: white;
+  font-size: 0.6rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Dot Container */
+.live-status-dot-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.live-status-dot {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pulse Animation for Connected Status */
+.live-status-pulse .live-status-dot::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(74, 222, 128, 0.4) 0%,
+    transparent 70%
+  );
+  animation: liveRingPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes liveRingPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.4);
+  }
+}
+
+/* Additional Pulse Animation for the Dot Itself */
+.live-status-pulse .live-status-dot {
+  animation: liveDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes liveDotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.4),
+      0 0 20px rgba(74, 222, 128, 0.2), inset 0 0 8px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.6),
+      0 0 30px rgba(74, 222, 128, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Text Styling */
+.live-status-text {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px currentColor;
+}
+
+/* Size Variants */
+.live-status-indicator.size-small .live-status-text {
+  font-size: 0.7rem;
+}
+
+.live-status-indicator.size-large .live-status-text {
+  font-size: 0.9rem;
+}
+
+/* High Contrast Variant */
+.live-status-indicator.variant-high-contrast.live-status-connected {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.live-status-indicator.variant-high-contrast.live-status-disconnected {
+  color: #ff4444;
+  text-shadow: 0 0 10px #ff4444;
+}
+
+.live-status-indicator.variant-high-contrast.live-status-connected
+  .live-status-dot {
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.6), 0 0 30px rgba(0, 255, 136, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.live-status-indicator.variant-high-contrast.live-status-disconnected
+  .live-status-dot {
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  box-shadow: 0 0 15px rgba(255, 68, 68, 0.6), 0 0 30px rgba(255, 68, 68, 0.3);
+}
+
+/* Minimal Variant */
+.live-status-indicator.variant-minimal .live-status-text {
+  display: none;
+}
+
+.live-status-indicator.variant-minimal .live-status-dot {
+  box-shadow: 0 0 5px rgba(74, 222, 128, 0.3), 0 0 10px rgba(74, 222, 128, 0.1);
+}
+
+.live-status-indicator.variant-minimal.live-status-disconnected
+  .live-status-dot {
+  box-shadow: 0 0 5px rgba(248, 113, 113, 0.3),
+    0 0 10px rgba(248, 113, 113, 0.1);
+}
+
+/* Dark Theme Enhancements */
+@media (prefers-color-scheme: dark) {
+  .live-status-indicator {
+    filter: brightness(1.1);
+  }
+}
+
+/* Hover Effects */
+.live-status-indicator:hover .live-status-dot {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.live-status-indicator:hover .live-status-text {
+  text-shadow: 0 0 12px currentColor;
+  transition: text-shadow 0.2s ease;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .live-status-indicator {
+    gap: 0.25rem;
+  }
+
+  .live-status-dot-container {
+    gap: 0.25rem;
+  }
+
+  .live-status-text {
+    font-size: 0.7rem;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .live-status-pulse .live-status-dot {
+    animation: none;
+  }
+
+  .live-status-pulse .live-status-dot::before {
+    animation: none;
+  }
+}

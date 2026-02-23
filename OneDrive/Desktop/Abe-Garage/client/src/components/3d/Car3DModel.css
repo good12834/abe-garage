@@ -1,0 +1,468 @@
+/* Car3DModel.css - Professional 3D Car Model Styling */
+
+.car-3d-container {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(30, 41, 59, 0.95) 50%,
+    rgba(15, 23, 42, 0.95) 100%
+  );
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.car-3d-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(139, 92, 246, 0.1) 0%,
+      transparent 50%
+    ),
+    linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Glass reflection effect */
+.car-3d-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+/* Title styling */
+.car-3d-container h3 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+  letter-spacing: 0.1em;
+  background: linear-gradient(to right, #ffffff, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.car-3d-container h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, transparent);
+  border-radius: 1px;
+}
+
+.car-3d-container p {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.05em;
+  position: relative;
+  display: inline-block;
+}
+
+.car-3d-container p::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.8) 0%,
+    rgba(59, 130, 246, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+/* Canvas area styling */
+.car-3d-container canvas {
+  outline: none;
+  cursor: grab;
+  transition: filter 0.3s ease;
+}
+
+.car-3d-container canvas:active {
+  cursor: grabbing;
+}
+
+.car-3d-container canvas:hover {
+  filter: brightness(1.1);
+}
+
+/* Controls indicator */
+.car-3d-container .controls-indicator {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.car-3d-container .controls-indicator:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.controls-indicator .status-dot {
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+  animation: pulse 2s infinite, float 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Loading state */
+.car-3d-container.loading {
+  background: linear-gradient(
+    90deg,
+    rgba(30, 41, 59, 0.8) 25%,
+    rgba(30, 41, 59, 0.9) 50%,
+    rgba(30, 41, 59, 0.8) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .car-3d-container {
+    border-radius: 1rem;
+  }
+
+  .car-3d-container h3 {
+    font-size: 1.25rem;
+  }
+
+  .car-3d-container p {
+    font-size: 0.75rem;
+  }
+
+  .controls-indicator {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-3d-container h3 {
+    font-size: 1.1rem;
+  }
+
+  .controls-indicator {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .car-3d-container {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+      0 0 80px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .controls-indicator {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
+}
+
+/* Hover effects for interactive elements */
+.car-3d-container {
+  transition: all 0.3s ease;
+}
+
+.car-3d-container:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 80px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Performance optimization */
+.car-3d-container canvas {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Accessibility */
+.car-3d-container:focus-within {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar for the container */
+.car-3d-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.car-3d-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.car-3d-container::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 4px;
+}
+
+.car-3d-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+/* Part tooltip */
+.part-tooltip {
+  background: rgba(0, 0, 0, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.part-tooltip .part-name {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.part-tooltip .part-info {
+  color: #60a5fa;
+  font-size: 10px;
+}
+
+/* Model and color selectors */
+.car-3d-container button {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.car-3d-container button:hover {
+  transform: translateY(-1px);
+}
+
+.car-3d-container button:active {
+  transform: translateY(0);
+}
+
+/* Color picker buttons */
+.car-3d-container .color-picker {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.car-3d-container .color-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.car-3d-container .color-button:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
+
+.car-3d-container .color-button.selected {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Model selector buttons */
+.car-3d-container .model-button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.car-3d-container .model-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.car-3d-container .model-button.selected {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+/* Part information panel */
+.part-info-panel {
+  background: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.part-info-panel .part-title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.part-info-panel .part-description {
+  color: #e5e7eb;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.part-info-panel .part-maintenance {
+  color: #60a5fa;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.part-info-panel .close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.part-info-panel .close-button:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced hover effects */
+.car-3d-container:hover .model-button:not(.selected) {
+  opacity: 0.8;
+}
+
+.car-3d-container:hover .color-button:not(.selected) {
+  opacity: 0.7;
+}
+
+/* Loading animation improvements */
+@keyframes loadingPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.car-3d-container.loading canvas {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+/* Print styles */
+@media print {
+  .car-3d-container {
+    background: white;
+    border: 2px solid #1e293b;
+    box-shadow: none;
+  }
+
+  .car-3d-container::before,
+  /* Car 3D container background is now visible */
+  .car-3d-container::after {
+    /* display: none removed to make visible */
+  }
+
+  .car-3d-container h3 {
+    -webkit-text-fill-color: #1e293b;
+    background: none;
+  }
+
+  .controls-indicator,
+  .part-tooltip,
+  /* Part info panel is now visible */
+  .part-info-panel {
+    /* display: none !important removed to make visible */
+  }
+
+  /* Car 3D container buttons are now visible */
+  .car-3d-container button {
+    /* display: none removed to make visible */
+  }
+}

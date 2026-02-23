@@ -1,0 +1,458 @@
+/* Floating Live Indicator - Ultra Prominent Corner Display */
+
+.floating-live-indicator {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+/* Position Classes */
+.floating-live-top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.floating-live-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.floating-live-bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.floating-live-bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Size Variants */
+.floating-live-small .floating-live-circle {
+  width: 40px;
+  height: 40px;
+}
+
+.floating-live-medium .floating-live-circle {
+  width: 60px;
+  height: 60px;
+}
+
+.floating-live-large .floating-live-circle {
+  width: 80px;
+  height: 80px;
+}
+
+.floating-live-xl .floating-live-circle {
+  width: 100px;
+  height: 100px;
+}
+
+/* Content Container */
+.floating-live-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Outer Glow Effect */
+.floating-live-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 136, 0.3) 0%,
+    transparent 70%
+  );
+  animation: glowPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Pulsing Ring */
+.floating-live-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  border: 2px solid #00ff88;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: ringExpand 2s ease-out infinite;
+}
+
+/* Main Status Circle */
+.floating-live-circle {
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4), 0 0 40px rgba(0, 255, 136, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.floating-live-circle.connected {
+  background: radial-gradient(circle, #00ff88 0%, #00cc6a 50%, #009952 100%);
+  border: 3px solid #00ff88;
+  animation: connectedFloat 3s ease-in-out infinite;
+}
+
+.floating-live-circle.disconnected {
+  background: radial-gradient(circle, #ff0040 0%, #cc0033 50%, #990026 100%);
+  border: 3px solid #ff0040;
+  box-shadow: 0 0 20px rgba(255, 0, 64, 0.4), 0 0 40px rgba(255, 0, 64, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: disconnectedShake 0.5s ease-in-out infinite alternate;
+}
+
+/* Icon Container */
+.floating-live-icon-container {
+  position: relative;
+  z-index: 2;
+}
+
+.floating-live-icon {
+  color: white;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+/* Animated Border */
+.floating-live-border {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #00ff88, #00ffff, #0088ff, #00ff88);
+  animation: borderRotate 3s linear infinite;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Status Label */
+.floating-live-label {
+  text-align: center;
+  min-width: 80px;
+}
+
+.floating-live-text {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.floating-live-text.connected {
+  color: #00ff88;
+  text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 15px #00ff88;
+}
+
+.floating-live-text.disconnected {
+  color: #ff0040;
+  text-shadow: 0 0 5px #ff0040, 0 0 10px #ff0040, 0 0 15px #ff0040;
+}
+
+.floating-live-timestamp {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Courier New", monospace;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Particle Effects */
+.floating-live-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  pointer-events: none;
+}
+
+.floating-live-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #00ff88;
+  opacity: 0;
+  animation: particleFloat var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+/* Individual Particle Positions */
+.particle-0 {
+  top: 0%;
+  left: 50%;
+}
+.particle-1 {
+  top: 15%;
+  left: 85%;
+}
+.particle-2 {
+  top: 50%;
+  left: 100%;
+}
+.particle-3 {
+  top: 85%;
+  left: 85%;
+}
+.particle-4 {
+  top: 100%;
+  left: 50%;
+}
+.particle-5 {
+  top: 85%;
+  left: 15%;
+}
+.particle-6 {
+  top: 50%;
+  left: 0%;
+}
+.particle-7 {
+  top: 15%;
+  left: 15%;
+}
+.particle-8 {
+  top: 25%;
+  left: 75%;
+}
+.particle-9 {
+  top: 75%;
+  left: 75%;
+}
+.particle-10 {
+  top: 75%;
+  left: 25%;
+}
+.particle-11 {
+  top: 25%;
+  left: 25%;
+}
+
+/* Blinking Effect */
+.floating-live-blink {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: blinkFlash 0.3s ease-out;
+  z-index: -2;
+}
+
+/* Toggle Button */
+.floating-live-toggle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.floating-live-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes ringExpand {
+  0% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+@keyframes connectedFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4), 0 0 40px rgba(0, 255, 136, 0.2),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6), 0 0 60px rgba(0, 255, 136, 0.3),
+      inset 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes disconnectedShake {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes borderRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes blinkFlash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Hover Effects */
+.floating-live-indicator:hover .floating-live-circle {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.floating-live-indicator:hover .floating-live-text {
+  text-shadow: 0 0 8px currentColor, 0 0 16px currentColor,
+    0 0 24px currentColor;
+  transition: text-shadow 0.3s ease;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .floating-live-small .floating-live-circle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .floating-live-medium .floating-live-circle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-live-large .floating-live-circle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .floating-live-xl .floating-live-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .floating-live-text {
+    font-size: 10px;
+  }
+
+  .floating-live-timestamp {
+    font-size: 8px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .floating-live-circle,
+  .floating-live-glow,
+  .floating-live-pulse-ring,
+  .floating-live-border,
+  .floating-live-particle,
+  .floating-live-blink {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .floating-live-circle.connected {
+    background: #00ff88;
+    border: 4px solid #ffffff;
+  }
+
+  .floating-live-circle.disconnected {
+    background: #ff0040;
+    border: 4px solid #ffffff;
+  }
+
+  .floating-live-text {
+    color: #ffffff;
+    text-shadow: none;
+    font-weight: 900;
+  }
+}
+
+/* Dark Theme Optimizations */
+@media (prefers-color-scheme: dark) {
+  .floating-live-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}

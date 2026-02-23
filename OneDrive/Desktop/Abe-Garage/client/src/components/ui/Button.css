@@ -1,0 +1,113 @@
+/* Button Component Specific Styles */
+
+.btn-icon-left,
+.btn-icon-right {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+}
+
+.btn-icon-left {
+  margin-right: 0.5rem;
+}
+
+.btn-icon-right {
+  margin-left: 0.5rem;
+}
+
+/* Icon-only button styles */
+.btn-icon-only {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon-only.btn-sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.btn-icon-only.btn-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.btn-icon-only.btn-xl {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+/* Button group specific styles */
+.btn-group .btn {
+  border-radius: 0;
+}
+
+.btn-group .btn:first-child {
+  border-top-left-radius: var(--btn-border-radius);
+  border-bottom-left-radius: var(--btn-border-radius);
+}
+
+.btn-group .btn:last-child {
+  border-top-right-radius: var(--btn-border-radius);
+  border-bottom-right-radius: var(--btn-border-radius);
+}
+
+.btn-group .btn:not(:last-child) {
+  margin-right: -1px;
+}
+
+/* Vertical button group */
+.btn-group-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.btn-group-vertical .btn {
+  border-radius: 0;
+  margin-bottom: -1px;
+}
+
+.btn-group-vertical .btn:first-child {
+  border-top-left-radius: var(--btn-border-radius);
+  border-top-right-radius: var(--btn-border-radius);
+}
+
+.btn-group-vertical .btn:last-child {
+  border-bottom-left-radius: var(--btn-border-radius);
+  border-bottom-right-radius: var(--btn-border-radius);
+  margin-bottom: 0;
+}
+
+/* Button toolbar */
+.btn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn-toolbar .btn-group {
+  margin: 0;
+}
+
+/* Responsive adjustments for button groups */
+@media (max-width: 576px) {
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-group .btn {
+    border-radius: var(--btn-border-radius);
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+
+  .btn-group .btn:last-child {
+    margin-bottom: 0;
+  }
+}

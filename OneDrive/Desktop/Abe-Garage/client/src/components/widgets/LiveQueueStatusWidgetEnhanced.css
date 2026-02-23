@@ -1,0 +1,325 @@
+/* Enhanced Live Queue Widget Styles */
+
+.live-queue-widget {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.live-queue-widget::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  animation: liveHeaderGlow 3s ease-in-out infinite;
+}
+
+@keyframes liveHeaderGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.live-queue-widget .card-header {
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  position: relative;
+}
+
+.live-queue-widget .card-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 189, 248, 0.5),
+    transparent
+  );
+}
+
+.live-queue-widget .card-body {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+/* Enhanced Bay Cards */
+.bay-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bay-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 189, 248, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.bay-card:hover::before {
+  left: 100%;
+}
+
+.bay-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.bay-card.border-success {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+}
+
+.bay-card.border-success:hover {
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}
+
+.bay-card.border-primary {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.bay-card.border-primary:hover {
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Progress Bar Enhancements */
+.progress {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  animation: progressShimmer 2s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+/* Priority Indicators */
+.priority-indicator {
+  animation: priorityPulse 2s ease-in-out infinite;
+}
+
+@keyframes priorityPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Queue Item Enhancements */
+.bg-light {
+  background: rgba(30, 41, 59, 0.1) !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 189, 248, 0.05),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.bg-light:hover::before {
+  left: 100%;
+}
+
+.bg-light:hover {
+  background: rgba(30, 41, 59, 0.2) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  transform: translateX(4px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Enhancements */
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: none;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Badge Enhancements */
+.badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.badge.bg-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.badge.bg-warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+/* Text Enhancements */
+.text-primary {
+  color: #3b82f6 !important;
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+.text-success {
+  color: #22c55e !important;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.2);
+}
+
+.text-warning {
+  color: #f59e0b !important;
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+/* Loading State Enhancements */
+.spinner-border {
+  border-width: 2px;
+  border-color: rgba(59, 130, 246, 0.3);
+  border-top-color: #3b82f6;
+  animation: spinnerGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes spinnerGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+}
+
+/* Icon Enhancements */
+.fa-car,
+.fa-wrench,
+.fa-check-circle,
+.fa-users,
+.fa-hourglass-half,
+.fa-warehouse {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .live-queue-widget {
+    margin: 0.5rem;
+  }
+
+  .bay-card {
+    padding: 0.75rem !important;
+  }
+
+  .bg-light {
+    padding: 1rem !important;
+  }
+}
+
+/* Dark Mode Optimizations */
+@media (prefers-color-scheme: dark) {
+  .live-queue-widget {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .bay-card::before,
+  .bg-light::before,
+  .btn-primary::before,
+  .liveHeaderGlow,
+  .progressShimmer,
+  .priorityPulse,
+  .spinnerGlow {
+    animation: none;
+  }
+
+  .bay-card:hover,
+  .bg-light:hover,
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
+/* Focus States */
+.bay-card:focus,
+.bg-light:focus,
+.btn-primary:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
